@@ -3,9 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Práctica 01 IS</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
+    <!-- EL MENU SUPERIOR -->
+    <header class="top-menu">
+        <!-- PARA PODER PONER EL SUBTITILO POR ABAJO -->
+        <div class="menu-titles">
+            <h1>PEÑA8.0</h1>
+            <p>Práctica01IS</p>
+        </div>
+        <nav>
+            <a href="#" id="members-a">Members</a>
+            <a href="#" id="clock-a">Clock</a>
+        </nav>
+    </header>
+
+    <!-- TODO SOBRE LAS SECCIONES, SECCIONES SEPARADAS PARA MOSTRAR Y OCULTAR, 
+     RECUERDA COMENTAR PORFA AUNQUE SEA ASI BASICO COMO YO  -->
+    <main>
+        <section id="members-section" class="content-section active-section">
+            <p>BORRA ESTO SOLO ERA TEST</p>
+        </section>
+
+        <section id="clock-section" class="content-section">
+            <p>TMB BORRA ESTO SOLO ERA TEST</p>
+        </section>
+    </main>
+
+    <!-- LOS BOTONES PARA CAMBIO DE ESTILOS DE LA PAGINA -->
+    <div class="fixed-buttons">
+        <div class="button-container">
+            <!-- SE USO UN EMOJI EN LUGAR DE ICONO -->
+            <button id="color-btn" class="circular-btn">🎨</button>
+            <span class="tooltip">Change Background Color</span>
+        </div>
+        <div class="button-container">
+            <button id="font-btn" class="circular-btn">🔤</button>
+            <span class="tooltip">Change Font Style</span>
+        </div>
+    </div>
+
+    <!-- LINK AL SCRIPT DE TIPO MODULO PARA QUE FUNCIONEN LOS EXPORTS -->
+    <script src="js/script.js" type="module"></script>
 </body>
 </html>

@@ -1,0 +1,174 @@
+/* Inlcuye los improts para 3 fuentes diferentes, recomendadas por gemini jaja */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&family=Nunito:wght@400;700&display=swap');
+
+/* Sirve para que todos los selectores tegnan acceso a estos valores, por eso es :root */
+:root {
+    /* Colores que vamos a usar y modificar, estan aqui para cambiarlas facil con js.
+    Agrega aqui si vas a ocupar mas colores */
+    --primary-color: #333;
+    --secondary-color: #555;
+    --background-color: #f4f4f4;
+    --menu-bg-color: #bbb;
+    --border-color: #999;
+    --tooltip-bg-color: #555;
+    --tooltip-text-color: #fff;
+
+    /* Y la config relacionada a los fonts, tmb para poder modificarla faciul con js.
+    Agrega aqui si vas a ocupar otras fuentes y tama;os de letra */
+    --main-font: 'Roboto', sans-serif;
+    --h1-font-size: 2.5rem;
+    --p-font-size: 1rem;
+    --nav-font-size: 1.2rem;
+    --body-font-size: 1rem;
+}
+
+/* EStilos generales, y aqui puedes ver como puedes usar las varibales */
+
+/* Esto es de buenas practicas de css, para que el border y padd 
+sean tomados en cuenta para height y width de los elementos. Solo es para asegurar que todos
+hereden esta config */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: var(--main-font);
+    background-color: var(--background-color);
+    font-size: var(--body-font-size);
+    color: var(--primary-color);
+}
+
+main {
+    padding-top: 100px; /* por lo del menu en fixed */ 
+}
+/* Fin de estilos generales */
+
+/* Todo lo relacionado al navbar y pues el menu */
+.top-menu {
+    position: fixed; /* Para sacarlo del flow del doc y que siempre este arriba */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Fija para hacer el reajuste mas simple de margen de otros elementos jajajaja */
+    background-color: var(--menu-bg-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Para que el titulo a la izq y el anvbar a la derecha*/
+    padding: 0 40px; /* El primer valor indica arriba y abajo, entonces aqui solo cambie el de los lados */
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Parta qeu siempre sea visible, nada este por encima del menu */
+}
+
+/* Esto es lo de la caja donde esta pe;a9.0 y lo de practica */
+.menu-titles {
+    text-align: center;
+}
+
+.menu-titles h1 {
+    margin: 0;
+    font-size: var(--h1-font-size);
+    color: var(--primary-color);
+}
+
+.menu-titles p {
+    margin: 0;
+    font-size: var(--p-font-size);
+    color: var(--secondary-color);
+}
+
+/* Ahora si las dos opciones del navbar, flex pq es mas simple la distribucion del espacio y su separacion */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none; /* Quitar las lineas por default */
+    color: var(--primary-color);
+    font-size: var(--nav-font-size);
+    padding: 15px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Para que sea menos abruto el cambio, se vea mas dinamico con una transicion */
+}
+
+nav a:hover {
+    background-color: var(--border-color);
+}
+/* Fin de lo del menu */
+
+/* Inicia todo lo relacionado a los estilos de los dos botones fijos que estan en la pantalla */
+.fixed-buttons {
+    position: fixed; /* Fixed, igual que con el menu, es lo que permite que siempre esten en la misma posicion de la pantalla */
+    bottom: 20px; /* Al ser fixed se pueden colocar con precision, en este caso con respecto a la esquina inferior derecha, por eso right y bottom */
+    right: 20px;
+    display: flex; /* EPara poder colocar los dos botones facilmente con una separacion uno encima del otro */
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000; /* Igual como el menu, debe ser siempre visible, nada por encima de ellos */
+}
+
+/* El container es necesario para incluir el como hint de lo que hace el boton */
+.button-container {
+    position: relative;  /* El relativo es importantisimo para poder posoicionar la cajita o el tooltip o hint con respecto a esta y no al documento */
+    display: inline-block; /* Para que la caja este a lado del boton, cuando aparezca*/
+}
+
+.circular-btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%; /* La clave para el circulo */
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--tooltip-text-color);
+    font-size: 32px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Dar algo de profundidad sobre el fondo en elq ue estan */
+    transition: background-color 0.3s; /* Igual que los elementos a del anv */
+}
+
+.circular-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.tooltip {
+    visibility: hidden; /* Por default no se deben poder ver los tips o hints de los dos botones */
+    background-color: var(--tooltip-bg-color);
+    color: var(--tooltip-text-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;  /* GRacias al uso de relative en el div padre, puedo posicionarlo con respecto a el y sacarlo del flow del doc tmb */
+    z-index: 1;
+    right: 120%;
+    top: 50%;
+    transform: translateY(-50%); /* para poder centrarlo verticalmente con el botn en la mitad */
+    white-space: nowrap; /* Para mantener todo en una sola linea */
+    opacity: 0; /* POpacity 0 en lugar de display non para poder aplicar la transicion de abajo */
+    transition: opacity 0.3s; /* Igual que nav, que el cambio no sea abrupto y de la apariencia de mas dinamico */
+}
+
+.button-container:hover .tooltip {
+    visibility: visible; /* cuando se hace hover sobre el contendedor, el tooltip se vuelve visible */
+    opacity: 1;
+}
+/* Fin de los botones fijos */
+
+/* Aqui todo lo de las secciones */
+/* Aqui pon todos tus estilos abajos, y con comentarios separa que es de cada seccion porfa, acuerdate de comentar tmb aqui por is acaso */
+.content-section {
+    display: none; /* Ninguna por default, esto lo cambiamos en js con el boton usando el estilo de abajo, y recordar que tenemos que poner una por default con js */
+    padding: 20px;
+    min-height: calc(100vh - 100px); /* La resta se debe a lo que toma el menu, que es fixed y por ello esta fuera del flow del documento  */
+}
+
+.active-section {
+    display: block; /* Ahora si que se muestre la seleccionada */
+}
+
