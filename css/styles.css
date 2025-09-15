@@ -1,10 +1,9 @@
-/* Inlcuye los improts para 3 fuentes diferentes, recomendadas por gemini jaja */
+/* Imports de 3 fuentes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&family=Nunito:wght@400;700&display=swap');
 
-/* Sirve para que todos los selectores tegnan acceso a estos valores, por eso es :root */
+/* Varaibles Globales */
 :root {
-    /* Colores que vamos a usar y modificar, estan aqui para cambiarlas facil con js.
-    Agrega aqui si vas a ocupar mas colores */
+    /* Paleta de Colores */
     --primary-color: #333;
     --secondary-color: #555;
     --background-color: #f4f4f4;
@@ -12,21 +11,32 @@
     --border-color: #999;
     --tooltip-bg-color: #555;
     --tooltip-text-color: #fff;
+    --card-bg: #ffffff;
+    --title-color: #2c3e50;
 
-    /* Y la config relacionada a los fonts, tmb para poder modificarla faciul con js.
-    Agrega aqui si vas a ocupar otras fuentes y tama;os de letra */
+    /* Fonts */
     --main-font: 'Roboto', sans-serif;
+    --font-title: 'Merriweather', serif;
+    --font-alt: 'Nunito', sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+
+    /* Tamaños */
     --h1-font-size: 2.5rem;
     --p-font-size: 1rem;
     --nav-font-size: 1.2rem;
     --body-font-size: 1rem;
+    --fs-header-title: 2.2rem;
+    --fs-header-subtitle: 0.95rem;
+    --fs-section-title: 2rem;
+    --fs-member-name: 1.2rem;
+    --fs-clock: 3rem;
+    --fs-button: 1rem;
+    --fs-btn-circular: 2rem;
 }
 
-/* EStilos generales, y aqui puedes ver como puedes usar las varibales */
+/* Estilos Generales */
 
-/* Esto es de buenas practicas de css, para que el border y padd 
-sean tomados en cuenta para height y width de los elementos. Solo es para asegurar que todos
-hereden esta config */
+/* Se asegura que el border y padd sean tomados en cuenta para height y width de los elementos */
 html {
   box-sizing: border-box;
 }
@@ -48,39 +58,51 @@ main {
 }
 /* Fin de estilos generales */
 
-/* Todo lo relacionado al navbar y pues el menu */
+/* Navbar y Menu */
 .top-menu {
     position: fixed; /* Para sacarlo del flow del doc y que siempre este arriba */
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px; /* Fija para hacer el reajuste mas simple de margen de otros elementos jajajaja */
+    height: 100px; /* Fija para hacer el reajuste mas simple de margen de otros elementos */
     background-color: var(--menu-bg-color);
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; /* Para que el titulo a la izq y el anvbar a la derecha*/
-    padding: 0 40px; /* El primer valor indica arriba y abajo, entonces aqui solo cambie el de los lados */
+    justify-content: space-between; /* Para que el titulo a la izq y el navbar a la derecha*/
+    padding: 0 40px; /* El primer valor indica arriba y abajo, el segundo el de los lados */
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Parta qeu siempre sea visible, nada este por encima del menu */
+    z-index: 1000; /* Para que siempre sea visible, nada este por encima del menu */
 }
 
-/* Esto es lo de la caja donde esta pe;a9.0 y lo de practica */
+/* Tiulos del Header */
 .menu-titles {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .menu-titles h1 {
-    margin: 0;
-    font-size: var(--h1-font-size);
-    color: var(--primary-color);
+  margin: 0;
+  font-size: var(--fs-header-title);
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.menu-titles h1 span {
+  color: var(--title-color);
+  font-weight: bold;
 }
 
 .menu-titles p {
-    margin: 0;
-    font-size: var(--p-font-size);
-    color: var(--secondary-color);
+  margin: 5px 0 0 0;
+  font-size: var(--fs-header-subtitle);
+  color: var(--secondary-color);
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 /* Ahora si las dos opciones del navbar, flex pq es mas simple la distribucion del espacio y su separacion */
@@ -103,12 +125,12 @@ nav a:hover {
 }
 /* Fin de lo del menu */
 
-/* Inicia todo lo relacionado a los estilos de los dos botones fijos que estan en la pantalla */
+/* Botones Fijos que estan en la pantalla */
 .fixed-buttons {
     position: fixed; /* Fixed, igual que con el menu, es lo que permite que siempre esten en la misma posicion de la pantalla */
     bottom: 20px; /* Al ser fixed se pueden colocar con precision, en este caso con respecto a la esquina inferior derecha, por eso right y bottom */
     right: 20px;
-    display: flex; /* EPara poder colocar los dos botones facilmente con una separacion uno encima del otro */
+    display: flex; /* Para poder colocar los dos botones facilmente con una separacion uno encima del otro */
     flex-direction: column;
     gap: 10px;
     z-index: 1000; /* Igual como el menu, debe ser siempre visible, nada por encima de ellos */
@@ -127,10 +149,10 @@ nav a:hover {
     border: none;
     background-color: var(--primary-color);
     color: var(--tooltip-text-color);
-    font-size: 32px;
+    font-size: var(--fs-btn-circular);
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Dar algo de profundidad sobre el fondo en elq ue estan */
-    transition: background-color 0.3s; /* Igual que los elementos a del anv */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Dar algo de profundidad sobre el fondo en el que estan */
+    transition: background-color 0.3s; /* Igual que los elementos a del nav */
 }
 
 .circular-btn:hover {
@@ -144,13 +166,13 @@ nav a:hover {
     text-align: center;
     border-radius: 6px;
     padding: 5px 8px;
-    position: absolute;  /* GRacias al uso de relative en el div padre, puedo posicionarlo con respecto a el y sacarlo del flow del doc tmb */
+    position: absolute;  /* Gracias al uso de relative en el div padre, puedo posicionarlo con respecto a el y sacarlo del flow del doc tmb */
     z-index: 1;
     right: 120%;
     top: 50%;
-    transform: translateY(-50%); /* para poder centrarlo verticalmente con el botn en la mitad */
+    transform: translateY(-50%); /* para poder centrarlo verticalmente con el boton en la mitad */
     white-space: nowrap; /* Para mantener todo en una sola linea */
-    opacity: 0; /* POpacity 0 en lugar de display non para poder aplicar la transicion de abajo */
+    opacity: 0; /* Opacity 0 en lugar de display none para poder aplicar la transicion de abajo */
     transition: opacity 0.3s; /* Igual que nav, que el cambio no sea abrupto y de la apariencia de mas dinamico */
 }
 
@@ -158,10 +180,31 @@ nav a:hover {
     visibility: visible; /* cuando se hace hover sobre el contendedor, el tooltip se vuelve visible */
     opacity: 1;
 }
+
+/* Boton para cambiar de mimebros */
+#members-btn {
+  margin: 10px;
+  margin-top: 30px;
+  padding: 12px 28px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 30px; /* Redondeo de los bordes del boton*/
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: var(--fs-button);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out; /* Animacion al boton de 0.3 segundos de manera gradual*/
+}
+
+#members-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px); /* Desplazamiento ligero hacia arriba para el bton */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad*/
+}
 /* Fin de los botones fijos */
 
-/* Aqui todo lo de las secciones */
-/* Aqui pon todos tus estilos abajos, y con comentarios separa que es de cada seccion porfa, acuerdate de comentar tmb aqui por is acaso */
+/* Secciones de la pagina */
 .content-section {
     display: none; /* Ninguna por default, esto lo cambiamos en js con el boton usando el estilo de abajo, y recordar que tenemos que poner una por default con js */
     padding: 20px;
@@ -169,6 +212,135 @@ nav a:hover {
 }
 
 .active-section {
-    display: block; /* Ahora si que se muestre la seleccionada */
+    display: flex; /* Ahora si que se muestre la seleccionada */
 }
 
+/* Seccion de miembros */
+#members-section {
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s ease-in-out; /* Animacion a la foto de 0.5 segundos de manera gradual*/
+    padding: 20px;
+}
+
+#members-section img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover; /* Ajustar la imagen al contenedor */
+    border-radius: 50%;
+    margin-top: 10px;
+    transition: all 0.5s ease-in-out; /* La animacion de la imagen se aplica a todas sus propiedades */
+}
+
+#members-section img:hover {
+    transform: rotate(360deg); /* Efecto de rotacion de 360 grados */
+}
+
+/* Descripcion del miembro */
+#member-desc {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 12px;
+    border: 4px solid transparent;
+
+    /* Definicion del fondo blanco para la terjata y el borde con degrado para la descripcion en base a los colores de fondo*/
+    background:
+        linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+        linear-gradient(45deg, color-mix(in srgb, var(--background-color) 100%, black 5%)) border-box;              
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*Sombra en la caja de descripcion*/
+    font-family: var(--main-font);
+    font-size: var(--p-font-size);
+    font-weight: 400;
+    line-height: 1.8;
+    text-align: center;
+}
+
+#member-desc:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /*Sombra adicional al pasar el cursor en la caja de descripcion*/
+}
+
+/* Tarjeta visual para cada miembro */
+.member-card {
+  display: flex;
+  flex-direction: column; /* Colocacion de los elementos en columna */
+  align-items: center;
+  background-color: var(--card-bg);
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /*Sombra en la tarjeta del miembro */
+  max-width: 450px;
+}
+
+.member-card:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15); /* Sombra en la tarjeta al pasar el cursor */
+}
+
+.member-card figure {
+  margin: 0;
+  text-align: center;
+}
+
+.member-card figcaption {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: var(--fs-member-name);
+  color: var(--title-color);
+}
+
+/* Seccion de Reloj */
+#clock-section {
+  flex-direction: column; /* h1 arriba, reloj abajo */
+  justify-content: flex-start; /* evita que quede centrado en toda la altura */
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Tarjeta que contiene el reloj */
+.clock-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* espacio entre segmentos y separadores */
+  padding: 15px 25px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra en la tarjeta que contiene el reloj*/
+  margin: 0 auto; /* centrado horizontal, sin mucho margen vertical */
+  max-width: fit-content;
+}
+
+/* Numeros del reloj*/
+.time-segment {
+    font-family: var(--font-mono);
+    font-size: var(--fs-clock);
+    font-weight: bold;
+    color: var(--title-color);
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 8px;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra en cada uno de los segmentos */
+}
+
+/* Separadores del reloj, es decir, los dos puntos (:)*/
+.time-separator {
+    font-family: var(--font-mono);
+    font-size: var(--fs-clock);
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Titulos de las secciones */
+.content-section h1 {
+  font-size: var(--fs-section-title);
+  margin: 0 0 25px 0;
+  padding-top: 20px;
+  color: var(--primary-color);
+  text-align: center;
+  letter-spacing: 1px;
+}

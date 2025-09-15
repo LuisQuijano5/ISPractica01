@@ -1,4 +1,4 @@
-//Si vas a agregar mas colores o font, tiene que agregarlo aca tmb no solo en styles
+// Importamos las configuraciones de paletas de colores y fuentes definidas en configs.js
 import { colorPalettes, fontConfigs } from './configs.js';
 
 //-- Definicion de variables --
@@ -7,24 +7,60 @@ const root = document.documentElement;
 
 // Botones para darles eventListener
 const membersSecA = document.getElementById("members-a");
-const clocklSecA = document.getElementById("clock-a");
+const clockSecA = document.getElementById("clock-a");
 const colorBtn = document.getElementById("color-btn");
 const fontBtn = document.getElementById("font-btn");
+const memberBtn = document.getElementById("members-btn");
 
 // Secciones para hacerlas visibles
 const membersSec = document.getElementById("members-section");
 const clockSec = document.getElementById("clock-section");
 
-// Varibales que se van a usar para las funciones
+// Variables que se van a usar para las funciones
 let colorIndex = 0;
 let fontIndex = 0;
+let memberIndex = 0;
 
-// -- Funcion cuando se cargue el documento, aqui pon la llamada del reloj par que inicie con lo suyo
+// Datos de los integrantes
+// Cada objeto representa un integrante del equipo con su nombre, foto y descripcion.
+const members = [
+    { id: "Alumno 1", name: "Jesus Alejandro Elguera Tovar", photo: "imgs/jesus.png", desc: "Aficionado al fútbol, me considero una persona responsable y con muchas ganas de aprender cosas nuevas cada día. Estoy iniciando en el mundo del running y disfruto cada pequeño avance que me impulsa a seguir mejorando."},
+    { id: "Alumno 2", name: "Luis Angel Quijano Guerrero", photo: "imgs/quijano.jpg", desc: "Pon tu Descripción."}
+];
+
+// -- Funciones Principales --
+// Funcion para mostrar la hora actual
+function showTime() {
+    const now = new Date();
+
+    // Obtener horas, minutos y segundos, asegurando al menos 2 digitos
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+
+    // Se actualizan los spans del reloj
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+}
+
+// Función para actualizar el texto del botón
+function updateButtonText() {
+    // Calcula el indice del proximo miembro
+    const nextIndenx = (memberIndex + 1) % members.length;
+    // Cambia el texto del bton para indicar que miembro se mostrara al dar clic
+    memberBtn.textContent = "Mostrar " + members[nextIndenx].id;
+}
+
+// -- Funcion para cuando se cargue el documento, actualizar y mostrar valores
 document.addEventListener('DOMContentLoaded', () => {
-    
+    showTime();
+    setInterval(showTime,1000);
+
+    updateButtonText();
 });
 
-// -- A;adiendo eventListeners -- 
+// -- Añadiendo eventListeners -- 
 //Al dar click al a de members, se debe hacer visible la seccion de members y ocultar la otra
 membersSecA.addEventListener("click", () => {
     //Se debe verificar que no esten ya configuradas como se supone al dar el click
@@ -35,7 +71,7 @@ membersSecA.addEventListener("click", () => {
 });
 
 //Al dar click al a de clock, se debe hacer visible la seccion de clock y ocultar la otra
-clocklSecA.addEventListener("click", () => {
+clockSecA.addEventListener("click", () => {
     //Se debe verificar que no esten ya configuradas como se supone al dar el click
     if(!clockSec.classList.contains("active-section")){
         clockSec.classList.add("active-section"); //Se agrega a la lista de clases para que el estilo se le aplique
@@ -43,9 +79,9 @@ clocklSecA.addEventListener("click", () => {
     }
 });
 
-//Funcion para el cmabio de color de fondo cuando se de click al boton
+//Funcion para el cambio de color de fondo cuando se de click al boton
 colorBtn.addEventListener("click", () => {
-    // Como en css ya esta deifnido el elemetno 0, primero hacemos el aumento en 1, el modulo es importante para que se cicle
+    // Como en css ya esta deifnido el elemento 0, primero hacemos el aumento en 1, el modulo es importante para que se cicle
     colorIndex = (colorIndex + 1) % colorPalettes.length; 
     const nextPalette = colorPalettes[colorIndex]; // Se obtiene la paleta de colores que sigue
 
@@ -59,7 +95,7 @@ colorBtn.addEventListener("click", () => {
 
 //Funcion para el cmabio de font cuando se de click al boton
 fontBtn.addEventListener("click", () => {
-    // Como en css ya esta deifnido el elemetno 0, primero hacemos el aumento en 1, el modulo es importante para que se cicle
+    // Como en css ya esta deifnido el elemento 0, primero hacemos el aumento en 1, el modulo es importante para que se cicle
     fontIndex = (fontIndex + 1) % fontConfigs.length; 
     const nextFont = fontConfigs[fontIndex]; // Se obtiene la configuracion de font que sigue
 
@@ -71,4 +107,15 @@ fontBtn.addEventListener("click", () => {
     }
 });
 
+//Funcion para el cambio de integrante cuando se de click al boton
+memberBtn.addEventListener("click", () => {
+    // Avanza circularmente al siguiente miembro
+    memberIndex = (memberIndex + 1) % members.length;
+    // Actualiza la tarjeta con los datos del nuevo integrante
+    document.getElementById("member-photo").src = members[memberIndex].photo;
+    document.getElementById("member-name").textContent = members[memberIndex].name;
+    document.getElementById("member-desc").textContent = members[memberIndex].desc;
 
+    // Actualizar el texto del botón después de cambiar el integrante
+    updateButtonText();
+});

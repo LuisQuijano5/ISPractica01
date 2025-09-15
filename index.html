@@ -9,26 +9,60 @@
 <body>
     <!-- EL MENU SUPERIOR -->
     <header class="top-menu">
-        <!-- PARA PODER PONER EL SUBTITILO POR ABAJO -->
+        <!-- TITULOS PRINCIPALES -->
         <div class="menu-titles">
-            <h1>PEÑA8.0</h1>
-            <p>Práctica01IS</p>
+            <h1>PEÑA <span>8.0</span></h1> <!-- NOMBRE DEL EQUIPO, EL SPAN PERMITE DARLE UN COLOR DISTINTO -->
+            <p>Práctica 01 Ingenieria de Software</p> <!-- NOMBRE DE LA ACTIVIDAD -->
         </div>
         <nav>
+            <!-- VINCULOS A LAS SECCIONES DEL PAGINA -->
             <a href="#" id="members-a">Members</a>
             <a href="#" id="clock-a">Clock</a>
         </nav>
     </header>
 
-    <!-- TODO SOBRE LAS SECCIONES, SECCIONES SEPARADAS PARA MOSTRAR Y OCULTAR, 
-     RECUERDA COMENTAR PORFA AUNQUE SEA ASI BASICO COMO YO  -->
+    <!-- TODO SOBRE LAS SECCIONES, SECCIONES SEPARADAS PARA MOSTRAR Y OCULTAR -->
     <main>
+        <!-- SECCION DE INTEGRANTES -->
         <section id="members-section" class="content-section active-section">
-            <p>BORRA ESTO SOLO ERA TEST</p>
+            <h1>Integrantes del Equipo</h1>
+
+            <!-- TARJETA DEL INTEGRANTE -->
+            <article class="member-card">
+
+                <!-- CONTENEDOR SEMANTICO PARA IMAGEN Y PIE DE FOTO -->
+                <figure>
+                <!-- FOTO DEL INTEGRANTE -->
+                <img id="member-photo" src="imgs/jesus.png" alt="Foto de Jesus" />
+                <!-- NOMBRE DEL INTEGRANTE -->
+                <figcaption id="member-name">Jesus Alejandro Elguera Tovar</figcaption>
+                </figure>
+
+                <!-- DESCRIPCION PERSONAL -->
+                <p id="member-desc">
+                    Aficionado al fútbol, me considero una persona responsable y con muchas ganas de aprender cosas nuevas cada día. Estoy iniciando en el mundo del running y disfruto cada pequeño avance que me impulsa a seguir mejorando.
+                </p>
+            </article>
+
+            <!-- BOTON PARA MOSTRAR AL SIGUIENTE INTEGRANTE -->
+            <div>
+                <button id="members-btn">Mostrar siguiente integrante</button>
+            </div>
         </section>
 
+        <!-- SECCION DEL RELOJ -->
         <section id="clock-section" class="content-section">
-            <p>TMB BORRA ESTO SOLO ERA TEST</p>
+            <h1>Tiempo Actual</h1>
+
+            <!-- CONTENEDOR DEL RELOJ -->
+            <div class="clock-card">
+                <!-- SEGMENTOS DEL RELOJ -->
+                <span id="hours" class="time-segment"></span>
+                <span class="time-separator">:</span>
+                <span id="minutes" class="time-segment"></span>
+                <span class="time-separator">:</span>
+                <span id="seconds" class="time-segment"></span>
+            </div>
         </section>
     </main>
 
