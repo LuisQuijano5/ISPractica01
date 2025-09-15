@@ -1,7 +1,5 @@
-// Aqui dejo las configuraciones de paletas y de fonts para variarlas con los botones
-// Si vas a usar algun otro color para lo de las dos secciones tmb tienes que poner 
-// su equivalente aqui para las diferentes ocnfiguraciones. Yo le pedi a gemini
-// que me creara las otras 4 paletas y config de font basado en la que yo defini en el css
+// Configuraciones de Paletas y de fonts
+
 const colorPalettes = [
     {
         name: "Default",
@@ -11,7 +9,9 @@ const colorPalettes = [
         "--menu-bg-color": "#bbb",
         "--border-color": "#999",
         "--tooltip-bg-color": "#555",
-        "--tooltip-text-color": "#fff"
+        "--tooltip-text-color": "#fff",
+        "--card-bg": "#ffffff",
+        "--title-color": "#2c3e50"
     },
     {
         name: "Blue",
@@ -62,7 +62,10 @@ const fontConfigs = [
         "--h1-font-size": "2.5rem",
         "--p-font-size": "1rem",
         "--nav-font-size": "1.2rem",
-        "--body-font-size": "1rem"
+        "--body-font-size": "1rem",
+        "--font-title": "'Merriweather', serif",
+        "--font-alt": "'Nunito', sans-serif",
+        "--font-mono": "'Courier New', Courier, monospace"
     },
     {
         name: "Serif Classic",
@@ -70,7 +73,11 @@ const fontConfigs = [
         "--h1-font-size": "3rem",
         "--p-font-size": "1.1rem",
         "--nav-font-size": "1.3rem",
-        "--body-font-size": "1.1rem"
+        "--body-font-size": "1.1rem",
+        "--font-title": "'Merriweather', serif",
+        "--font-alt": "'Roboto', sans-serif",
+        "--font-mono": "'Courier New', Courier, monospace"
+
     },
     {
         name: "Playful Sans-Serif",
@@ -78,7 +85,11 @@ const fontConfigs = [
         "--h1-font-size": "2.8rem",
         "--p-font-size": "1.2rem",
         "--nav-font-size": "1.4rem",
-        "--body-font-size": "1.2rem"
+        "--body-font-size": "1.2rem",
+        "--font-title": "'Nunito', sans-serif",
+        "--font-alt": "'Roboto', sans-serif",
+        "--font-mono": "'Courier New', Courier, monospace"
+
     }
 ];
 
