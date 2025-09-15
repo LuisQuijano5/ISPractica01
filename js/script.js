@@ -25,7 +25,7 @@ let memberIndex = 0;
 // Cada objeto representa un integrante del equipo con su nombre, foto y descripcion.
 const members = [
     { id: "Alumno 1", name: "Jesus Alejandro Elguera Tovar", photo: "imgs/jesus.png", desc: "Aficionado al fútbol, me considero una persona responsable y con muchas ganas de aprender cosas nuevas cada día. Estoy iniciando en el mundo del running y disfruto cada pequeño avance que me impulsa a seguir mejorando."},
-    { id: "Alumno 2", name: "Luis Angel Quijano Guerrero", photo: "imgs/quijano.jpg", desc: "Pon tu Descripción."}
+    { id: "Alumno 2", name: "Luis Angel Quijano Guerrero", photo: "imgs/quijano.jpg", desc: "También me gusta mucho el fútbol, soy estudiante de Ingenieria en Sistemas, tengo 4 gatos que quiero mucho y mi música favorita es el reggeatón 🦇."}
 ];
 
 // -- Funciones Principales --
@@ -109,13 +109,21 @@ fontBtn.addEventListener("click", () => {
 
 //Funcion para el cambio de integrante cuando se de click al boton
 memberBtn.addEventListener("click", () => {
-    // Avanza circularmente al siguiente miembro
-    memberIndex = (memberIndex + 1) % members.length;
-    // Actualiza la tarjeta con los datos del nuevo integrante
-    document.getElementById("member-photo").src = members[memberIndex].photo;
-    document.getElementById("member-name").textContent = members[memberIndex].name;
-    document.getElementById("member-desc").textContent = members[memberIndex].desc;
+    const memberCard = document.querySelector(".member-card");
+    memberCard.classList.add("fade-out");
 
-    // Actualizar el texto del botón después de cambiar el integrante
-    updateButtonText();
+    //Transicion suave
+    setTimeout(() => {
+        // Avanza circularmente al siguiente miembro
+        memberIndex = (memberIndex + 1) % members.length;
+
+        // Actualiza la tarjeta con los datos del nuevo integrante
+        document.getElementById("member-photo").src = members[memberIndex].photo;
+        document.getElementById("member-name").textContent = members[memberIndex].name;
+        document.getElementById("member-desc").textContent = members[memberIndex].desc;
+
+        // Actualizar el texto del boton despues de cambiar el integrante
+        updateButtonText();
+        memberCard.classList.remove("fade-out");
+    }, 500);
 });

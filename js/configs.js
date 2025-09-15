@@ -3,55 +3,75 @@
 const colorPalettes = [
     {
         name: "Default",
-        "--primary-color": "#333",
-        "--secondary-color": "#555",
+        "--primary-color": "#333333",
+        "--secondary-color": "#555555",
         "--background-color": "#f4f4f4",
-        "--menu-bg-color": "#bbb",
-        "--border-color": "#999",
-        "--tooltip-bg-color": "#555",
-        "--tooltip-text-color": "#fff",
+        "--menu-bg-color": "#bbbbbb",
+        "--border-color": "#999999",
+        "--tooltip-bg-color": "#555555",
+        "--tooltip-text-color": "#ffffff",
         "--card-bg": "#ffffff",
         "--title-color": "#2c3e50"
     },
     {
         name: "Blue",
-        "--primary-color": "#003366",
-        "--secondary-color": "#3498db",
+        "--primary-color": "#00204a",
+        "--secondary-color": "#2980b9",
         "--background-color": "#e8f6ff",
-        "--menu-bg-color": "#ffffff",
+        "--menu-bg-color": "#d0eafc",
         "--border-color": "#a6d9f7",
-        "--tooltip-bg-color": "#003366",
-        "--tooltip-text-color": "#ffffff"
+        "--tooltip-bg-color": "#00204a",
+        "--tooltip-text-color": "#ffffff",
+        "--card-bg": "#ffffff",
+        "--title-color": "#00204a"
     },
     {
         name: "Green",
-        "--primary-color": "#1a531a",
-        "--secondary-color": "#3c6e3c",
-        "--background-color": "#f0fff0",
+        "--primary-color": "#145c22",
+        "--secondary-color": "#27ae60",
+        "--background-color": "#e6fff0",
         "--menu-bg-color": "#d9f0d9",
-        "--border-color": "#88cc88",
-        "--tooltip-bg-color": "#1a531a",
-        "--tooltip-text-color": "#ffffff"
+        "--border-color": "#76c290",
+        "--tooltip-bg-color": "#145c22",
+        "--tooltip-text-color": "#ffffff",
+        "--card-bg": "#ffffff",
+        "--title-color": "#145c22"
     },
     {
         name: "Warm",
-        "--primary-color": "#8b2512",
-        "--secondary-color": "#e67e22",
-        "--background-color": "#fff5e6",
-        "--menu-bg-color": "#fff8f0",
-        "--border-color": "#f5cba7",
-        "--tooltip-bg-color": "#8b2512",
-        "--tooltip-text-color": "#ffffff"
+        "--primary-color": "#a63d18",
+        "--secondary-color": "#e74c3c",
+        "--background-color": "#fff8e6",
+        "--menu-bg-color": "#ffe8c6",
+        "--border-color": "#f2b28c",
+        "--tooltip-bg-color": "#a63d18",
+        "--tooltip-text-color": "#ffffff",
+        "--card-bg": "#ffffff",
+        "--title-color": "#a63d18"
     },
     {
         name: "Modern",
-        "--primary-color": "#34495e",
-        "--secondary-color": "#7f8c8d",
-        "--background-color": "#ecf0f1",
-        "--menu-bg-color": "#bdc3c7",
-        "--border-color": "#95a5a6",
-        "--tooltip-bg-color": "#34495e",
-        "--tooltip-text-color": "#ffffff"
+        "--primary-color": "#2c3e50",
+        "--secondary-color": "#95a5a6",
+        "--background-color": "#f0f6f7",
+        "--menu-bg-color": "#d4dadb",
+        "--border-color": "#bdc3c7",
+        "--tooltip-bg-color": "#2c3e50",
+        "--tooltip-text-color": "#ffffff",
+        "--card-bg": "#ffffff",
+        "--title-color": "#2c3e50"
+    },
+    {
+        name: "Dark",
+        "--primary-color": "#f8f9fa",
+        "--secondary-color": "#ced4da",
+        "--background-color": "#212529",
+        "--menu-bg-color": "#343a40",
+        "--border-color": "#6c757d",
+        "--tooltip-bg-color": "#f8f9fa",
+        "--tooltip-text-color": "#212529",
+        "--card-bg": "#2c3e50",
+        "--title-color": "#f8f9fa"
     }
 ];
 

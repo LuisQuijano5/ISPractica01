@@ -51,6 +51,7 @@ body {
     background-color: var(--background-color);
     font-size: var(--body-font-size);
     color: var(--primary-color);
+    transition: background-color 0.6s ease-in-out;
 }
 
 main {
@@ -74,6 +75,7 @@ main {
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000; /* Para que siempre sea visible, nada este por encima del menu */
+    transition: background-color 0.6s ease-in-out;
 }
 
 /* Tiulos del Header */
@@ -189,7 +191,7 @@ nav a:hover {
   background-color: var(--primary-color);
   border: none;
   border-radius: 30px; /* Redondeo de los bordes del boton*/
-  color: white;
+  color: var(--background-color);
   cursor: pointer;
   font-weight: 500;
   font-size: var(--fs-button);
@@ -306,7 +308,7 @@ nav a:hover {
   align-items: center;
   gap: 15px; /* espacio entre segmentos y separadores */
   padding: 15px 25px;
-  background-color: var(--card-bg);
+  background-color: var(--border-color);
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra en la tarjeta que contiene el reloj*/
   margin: 0 auto; /* centrado horizontal, sin mucho margen vertical */
@@ -319,7 +321,7 @@ nav a:hover {
     font-size: var(--fs-clock);
     font-weight: bold;
     color: var(--title-color);
-    background-color: #e9ecef;
+    background-color: var(--card-bg);
     padding: 10px 15px;
     border-radius: 8px;
     min-width: 80px;
@@ -343,4 +345,12 @@ nav a:hover {
   color: var(--primary-color);
   text-align: center;
   letter-spacing: 1px;
+}
+
+.member-card {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.member-card.fade-out {
+  opacity: 0;
 }
